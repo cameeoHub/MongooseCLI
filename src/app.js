@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const { createMovie, readMovies, updateMovie, deleteMovie } = require("./movie/functions");
 
 const app = async (yargsObj) => {
+    console.log(yargsObj)
     if (yargsObj.create) {
-        await createMovie( {title: yargsObj.title, director: yargsObj.director, actor: yargsObj.actor, year: yargsObj.year, rating: yargsObj} );
+        await createMovie( {title: yargsObj.title, actor: yargsObj.actor} );
         // adds movie to db
     } else if (yargsObj.read) {
         await readMovies()
