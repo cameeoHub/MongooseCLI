@@ -20,10 +20,22 @@ exports.readMovies = async () => {
     }
 }
 
-exports.updateMovie = async (movieObj) => {
-    const toEdit = await Movie.findOne(yargsObj.title);
-    const toUpdateWith = { title: yargsObj.newTitle };
-    await toEdit.updateOne(Movie, toUpdateWith);
-    console.log("finally!")
-    console.log(editedMovie)
-}
+exports.updateMovie = async (filter, update) => {
+    try {
+        console.log("U");
+        const updateMovie = await Movie.updateOne(filter, update);
+
+        console.log(updateMovie);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+exports.deleteMovie = async (movieObj) => {
+    try {
+        console.log("D");
+        await Movie.deleteOne(movieObj);
+    } catch (error) {
+        console.log(error);
+    }
+};
